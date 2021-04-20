@@ -15,7 +15,7 @@ const OrderList = () => {
     const [orders, setOrders] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/isAdmin', {
+        fetch('https://obscure-temple-65720.herokuapp.com/isAdmin', {
             method: 'POST',
             headers:{
                 'content-type' : 'application/json'
@@ -27,7 +27,7 @@ const OrderList = () => {
     }, [])
 
     useEffect(() => {
-        fetch('http://localhost:5000/orderList')
+        fetch('https://obscure-temple-65720.herokuapp.com/orderList')
         .then(res => res.json())
         .then(data => setOrders(data))
     })

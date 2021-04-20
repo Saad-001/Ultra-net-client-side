@@ -13,7 +13,7 @@ const AddService = () => {
     const [isAdmin, setIsAdmin] = useState(false);
     const [user, setUser] = useState(sessionStorage.getItem('email') || '')
     useEffect(() => {
-        fetch('http://localhost:5000/isAdmin', {
+        fetch('https://obscure-temple-65720.herokuapp.com/isAdmin', {
             method: 'POST',
             headers:{
                 'content-type' : 'application/json'
@@ -31,7 +31,7 @@ const AddService = () => {
             price: data.price,
             description: data.description,
         }
-        const url = `http://localhost:5000/addService`;
+        const url = `https://obscure-temple-65720.herokuapp.com/addService`;
         console.log(serviceData)
         fetch(url, {
             method: 'POST',
@@ -40,8 +40,6 @@ const AddService = () => {
             },
             body: JSON.stringify(serviceData)
         })
-
-        window.location.reload()
     }
 
     return (

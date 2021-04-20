@@ -15,7 +15,7 @@ const Book = () => {
     const [user, setUser] = useState(sessionStorage.getItem('email') || '')
 
     useEffect(() => {
-        fetch('http://localhost:5000/isAdmin', {
+        fetch('https://obscure-temple-65720.herokuapp.com/isAdmin', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -37,7 +37,7 @@ const Book = () => {
             status: data.status,
             price: data.price
         }
-        const url = `http://localhost:5000/bookPackage`;
+        const url = `https://obscure-temple-65720.herokuapp.com/bookPackage`;
 
         fetch(url, {
             method: 'POST',
@@ -53,7 +53,7 @@ const Book = () => {
     const {packageId} = useParams();
     console.log(packageId)
     useEffect(() =>{
-        fetch('http://localhost:5000/bookItem/' + packageId)
+        fetch('https://obscure-temple-65720.herokuapp.com/bookItem/' + packageId)
         .then(res => res.json())
         .then(data => setPackageData(data))
     }, [])

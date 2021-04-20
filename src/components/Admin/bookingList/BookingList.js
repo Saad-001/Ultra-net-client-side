@@ -16,7 +16,7 @@ const BookingList = () => {
     const [listItem, setListItem] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/isAdmin', {
+        fetch('https://obscure-temple-65720.herokuapp.com/isAdmin', {
             method: 'POST',
             headers:{
                 'content-type' : 'application/json'
@@ -28,7 +28,7 @@ const BookingList = () => {
     }, [])
 
     useEffect(() => {
-        fetch('http://localhost:5000/bookingList?email='+ user)
+        fetch('https://obscure-temple-65720.herokuapp.com/bookingList?email='+ user)
         .then(res => res.json())
         .then(data => setListItem(data))
     },[user])

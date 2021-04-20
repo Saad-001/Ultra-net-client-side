@@ -14,7 +14,7 @@ const MakeAdmin = () => {
     const [user, setUser] = useState(sessionStorage.getItem('email') || '')
 
     useEffect(() => {
-        fetch('http://localhost:5000/isAdmin', {
+        fetch('https://obscure-temple-65720.herokuapp.com/isAdmin', {
             method: 'POST',
             headers:{
                 'content-type' : 'application/json'
@@ -33,7 +33,7 @@ const MakeAdmin = () => {
             email: data.email
         }
         
-        fetch(`http://localhost:5000/makeAdmin`,{
+        fetch(`https://obscure-temple-65720.herokuapp.com/makeAdmin`,{
             method: 'POST',
             headers:{
                 'content-type': 'application/json'
@@ -41,7 +41,6 @@ const MakeAdmin = () => {
             body: JSON.stringify(adminEmail)
         })
 
-        window.location.reload()
     }
 
 

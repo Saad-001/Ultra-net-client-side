@@ -14,7 +14,7 @@ const AddReview = () => {
     const [user, setUser] = useState(sessionStorage.getItem('email') || '')
 
     useEffect(() => {
-        fetch('http://localhost:5000/isAdmin', {
+        fetch('https://obscure-temple-65720.herokuapp.com/isAdmin', {
             method: 'POST',
             headers:{
                 'content-type' : 'application/json'
@@ -33,7 +33,7 @@ const AddReview = () => {
             companyName: data.companyName,
             description: data.description
         }
-        const url = `http://localhost:5000/addReview`;
+        const url = `https://obscure-temple-65720.herokuapp.com/addReview`;
         console.log(reviewData)
         fetch(url, {
             method: 'POST',
@@ -43,7 +43,7 @@ const AddReview = () => {
             body: JSON.stringify(reviewData)
         })
 
-        window.location.reload()
+        // window.location.reload()
     }
     return (
         <section className="container-fluid">
