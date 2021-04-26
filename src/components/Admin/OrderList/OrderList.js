@@ -13,6 +13,7 @@ const OrderList = () => {
     const [user, setUser] = useState(sessionStorage.getItem('email') || '')
 
     const [orders, setOrders] = useState([])
+    console.log(orders)
 
     useEffect(() => {
         fetch('https://obscure-temple-65720.herokuapp.com/isAdmin', {
@@ -30,7 +31,35 @@ const OrderList = () => {
         fetch('https://obscure-temple-65720.herokuapp.com/orderList')
         .then(res => res.json())
         .then(data => setOrders(data))
-    })
+    },[])
+
+
+    const handleClick = (id) => {
+        console.log(id)
+        const updateData = {
+            status: "Done"
+        }
+        
+        fetch(`https://obscure-temple-65720.herokuapp.com/updateStatus/${id}`, {
+            method: 'PATCH',
+            headers:{'content-type' : 'application/json'},
+            body: JSON.stringify(updateData)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+        })
+    }
+
+    const handleDelete = (id) => {
+        console.log(id)
+        fetch(`https://obscure-temple-65720.herokuapp.com/deleteOrder/${id}`)
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+        })
+        window.location.reload(false)
+    }
     
 
     return (
@@ -56,8 +85,6 @@ const OrderList = () => {
                     <li className="fs-4 mb-3"><Link to="/addService"><FontAwesomeIcon icon={faPlus} /> Add Service</Link></li>
                     <hr />
                     <li className="fs-4 mb-3"><Link to="/makeAdmin"><FontAwesomeIcon icon={faUserPlus} /> Make Admin</Link></li>
-                    <hr />
-                    <li className="fs-4 mb-3"><Link to="/manageOrder"><FontAwesomeIcon icon={faTasks} /> Manage Order</Link></li>
                  </div>}
                 </ul>
             </div>
@@ -71,6 +98,7 @@ const OrderList = () => {
                         <th scope="col">Name</th>
                         <th scope="col">Email</th>
                         <th scope="col">Status</th>
+                        <th scope="col">Manage order</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -78,7 +106,17 @@ const OrderList = () => {
                         <th scope="row">{order.package}</th>
                         <td>{order.name}</td>
                         <td>{order.email}</td>
-                        <td>{order.status}</td>
+                        <td>
+                            <div class="dropdown">
+                                <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Order status
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <li class="dropdown-item" onClick={() =>handleClick(order._id)}>{order.status === "pending" ? <span>Done</span> : <span>reviewed</span>}</li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td><button onClick={() =>handleDelete(order._id)} className="btn btn-danger">Delete order</button></td>
                         </tr> )}
                     </tbody>
                 </table>

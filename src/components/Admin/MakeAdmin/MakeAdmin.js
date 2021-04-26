@@ -40,7 +40,6 @@ const MakeAdmin = () => {
             },
             body: JSON.stringify(adminEmail)
         })
-
     }
 
 
@@ -67,8 +66,6 @@ const MakeAdmin = () => {
                     <li className="fs-4 mb-3"><Link to="/addService"><FontAwesomeIcon icon={faPlus} /> Add Service</Link></li>
                     <hr />
                     <li className="fs-4 mb-3"><Link to="/makeAdmin"><FontAwesomeIcon icon={faUserPlus} /> Make Admin</Link></li>
-                    <hr />
-                    <li className="fs-4 mb-3"><Link to="/manageOrder"><FontAwesomeIcon icon={faTasks} /> Manage Order</Link></li>
                  </div>}
                 </ul>
             </div>

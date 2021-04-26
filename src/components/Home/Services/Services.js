@@ -16,6 +16,11 @@ const Services = () => {
             <h3 className="text-secondary text-center mb-5">Our Awesome <span className="text-primary">Packages</span></h3>
             <div className="justify-content-around row">
                 {
+                 packages.length === 0 && <div class="spinner-grow text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                  </div>
+                }
+                {
                     packages.map(pac => <Package pac={pac}></Package>)
                 }
             </div>

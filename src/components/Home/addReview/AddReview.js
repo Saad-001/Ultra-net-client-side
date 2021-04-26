@@ -42,9 +42,12 @@ const AddReview = () => {
             },
             body: JSON.stringify(reviewData)
         })
-
-        // window.location.reload()
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+        })
     }
+        
     return (
         <section className="container-fluid">
         <nav class="navbar navbar-light">
@@ -68,8 +71,6 @@ const AddReview = () => {
                     <li className="fs-4 mb-3"><Link to="/addService"><FontAwesomeIcon icon={faPlus} /> Add Package</Link></li>
                     <hr />
                     <li className="fs-4 mb-3"><Link to="/makeAdmin"><FontAwesomeIcon icon={faUserPlus} /> Make Admin</Link></li>
-                    <hr />
-                    <li className="fs-4 mb-3"><Link to="/manageOrder"><FontAwesomeIcon icon={faTasks} /> Manage Order</Link></li>
                   </div>}
                 </ul>
             </div>

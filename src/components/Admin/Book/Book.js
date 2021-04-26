@@ -47,6 +47,7 @@ const Book = () => {
             body: JSON.stringify(bookData)
         })
 
+        alert('You have successfully booked')
         history.push('/bookingList')
     }
     const [packageData, setPackageData] = useState({})
@@ -83,8 +84,6 @@ const Book = () => {
                             <li className="fs-4 mb-3"><Link to="/addService"><FontAwesomeIcon icon={faPlus} /> Add Package</Link></li>
                             <hr />
                             <li className="fs-4 mb-3"><Link to="/makeAdmin"><FontAwesomeIcon icon={faUserPlus} /> Make Admin</Link></li>
-                            <hr />
-                            <li className="fs-4 mb-3"><Link to="/manageOrder"><FontAwesomeIcon icon={faTasks} /> Manage Order</Link></li>
                         </div>}
                     </ul>
                 </div>
@@ -102,10 +101,10 @@ const Book = () => {
                             </div>
                             <div className="row">
                                 <div className="mb-3">
-                                    <input className="form-control" required name="package" value={packageData.name} placeholder="Package Name" {...register('package')} />
+                                    <input className="form-control" name="package" value={packageData.name} placeholder="Package Name" {...register('package')} />
                                 </div>
                                 <div className="mb-3">
-                                    <input className="form-control" required value={packageData.price} name="price" placeholder="price" {...register('price')} />
+                                    <input className="form-control" value={packageData.price} name="price" placeholder="price" {...register('price')} />
                                 </div>
                             </div>
                             <div className="row">

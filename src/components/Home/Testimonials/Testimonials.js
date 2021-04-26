@@ -18,6 +18,11 @@ const Testimonials = () => {
            </div>
             <div className="row justify-content-around mt-5">
                 {
+                  testimonials.length === 0 && <div class="spinner-grow text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                  </div>
+                }
+                {
                     testimonials.map(testimonial => <TestimonialCard testimonial={testimonial}></TestimonialCard>)
                 }
             </div>
